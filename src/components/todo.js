@@ -10,9 +10,12 @@ const Todo = () => {
   const [currentTodo, setCurrentTodo] = useState("");
 
   const handleClick = (e) => {
-    if (todo !== "" && !todoList.includes(todo)) {
-      setTodoList([...todoList, { todo: todo, strike: false }]);
-      setTodo("");
+    if (todo !== "") {
+      let newArr = todoList.filter((data) => data.todo === todo);
+      if (newArr.length == 0) {
+        setTodoList([...todoList, { todo: todo, strike: false }]);
+        setTodo("");
+      }
     }
   };
   const inputHandle = (e) => {
